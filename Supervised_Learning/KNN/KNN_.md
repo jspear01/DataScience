@@ -6,8 +6,9 @@ K-Nearest Neighbors (KNN) is a versatile supervised learning algorithm used for 
 ## How It Works
 - **Distance Calculation**: For a given unlabeled data point, KNN computes the Euclidean distance to other points in the dataset.
 - **Sorting and Selecting Neighbors**: These distances are sorted, and the 'k' nearest points are selected, where 'k' is a predefined constant.
-- **Classification or Regression**: The unlabeled point is then classified based on the majority label or average outcome of these 'k' points.
-
+- **Classification**: Get the label with majority vote.
+- **Regression**: Get the average of their values
+  
 ## Key Features
 - **Intuitive**: Classifies or predicts based on the proximity to known data.
 - **User-defined 'k'**: Flexibility in choosing the number of neighbors considered.
