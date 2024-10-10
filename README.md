@@ -3,7 +3,7 @@
 ## Resource
 
 1. Books
-- Mathematics for Machine Learning https://mml-book.github.io/[https://mml-book.github.io/]
+- Mathematics for Machine Learning [https://mml-book.github.io/](https://mml-book.github.io/)
 - DeepLearning from the Basics by Koki Saitoh
 - Mathmatics for Deep Learing https://d2l.ai/chapter_appendix-mathematics-for-deep-learning/index.html[https://d2l.ai/chapter_appendix-mathematics-for-deep-learning/index.html]
 2. Learning
