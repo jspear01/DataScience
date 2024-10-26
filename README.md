@@ -10,6 +10,12 @@
 - MIT Matrix Calculation [https://www.youtube.com/playlist?list=PLUl4u3cNGP62EaLLH92E_VCN4izBKK6OE](https://www.youtube.com/playlist?list=PLUl4u3cNGP62EaLLH92E_VCN4izBKK6OE)
 - 혁팬하임 유튜브
 - Mathmatics for machine learing [https://www.youtube.com/playlist?list=PLiiljHvN6z1_o1ztXTKWPrShrMrBLo5P3](https://www.youtube.com/playlist?list=PLiiljHvN6z1_o1ztXTKWPrShrMrBLo5P3), [https://www.youtube.com/playlist?list=PLiiljHvN6z193BBzS0Ln8NnqQmzimTW23](https://www.youtube.com/playlist?list=PLiiljHvN6z193BBzS0Ln8NnqQmzimTW23)
+  3. Interview
+- Deep understanding of linear models
+- Have a solid understanding of probability and some important probability distribution. (ex. Bete binomial distribution)
+- Multi dimentsional space - require strong understanding of variance co-variance matrix
+
+- 
 
 ## Study Plan
 
