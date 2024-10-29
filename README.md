@@ -15,7 +15,7 @@
 - Have a solid understanding of probability and some important probability distribution. (ex. Bete binomial distribution)
 - Multi dimentsional space - require strong understanding of variance co-variance matrix
 
-- 
+  
 
 ## Study Plan
 
@@ -59,3 +59,15 @@ Practical Implementation:
 - How do you handle class imbalance in deep learning?
 - What are the challenges of deploying deep learning models in production?
 - How would you modify a pre-trained model from classification to regression?
+
+### 2. Deep Learning
+
+- Vanilla RNN = Neural Network that's able to work with sequential data where each node takes in an element of the sequence with the current understanding of the sequence up to that point and generate a new understanding with that context taken into account
+
+- LSTM = RNN + ability to persist a "memory" via cell state and control updating or resetting this memory as we process sequence (to mitigate the long-term dependency problem if sequence is long)
+
+- Seq2Seq = Putting LSTM/RNNs together in an encoder-decoder architecture. You feed the entire sequence thru encoder and use the compressed, learned understanding from encoder (final hidden state) to predict output sequence in decoder.
+
+- Seq2Seq with attention = Seq2Seq + ability to generate a better final hidden state by computing weighted sum with every hidden layer from encoder to understand how "elements in input sequence relate to one another" and pass that info to decoder.
+
+- Transformers = Seq2Seq with Attention BUT instead of updating hidden state via sequential processing of input sequence, Attention layer is implemented such that the input sequence can be processed in one go and parallelizable on GPU. Transformer also allows for attention amongst input, attention amongst output and attention between the two.
