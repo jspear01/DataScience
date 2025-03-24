@@ -1,15 +1,15 @@
 
-# 🧮 Permutations and Combinations
+# Permutations and Combinations
 
 This guide explains the difference between **permutations** and **combinations** — essential concepts in combinatorics used for counting and arranging items.
 
 ---
 
-## 🔄 Permutation: *Order Matters*
+## Permutation: *Order Matters*
 
 A **permutation** is an arrangement of objects **in a specific order**.
 
-### 📌 Formula:
+### Formula:
 ```
 P(n, r) = n! / (n - r)!
 ```
@@ -18,7 +18,7 @@ P(n, r) = n! / (n - r)!
 - `r` = number of items to arrange  
 - `!` = factorial (e.g., `5! = 5 × 4 × 3 × 2 × 1 = 120`)
 
-### 🧠 Example:
+### Example:
 How many ways can you arrange 3 letters from the word **"ABCDE"**?
 
 - `n = 5` (letters)  
@@ -36,7 +36,7 @@ P(5, 3) = 5! / (5 - 3)! = 120 / 2 = 60
 
 A **combination** is a selection of objects **without considering order**.
 
-### 📌 Formula:
+### Formula:
 ```
 C(n, r) = n! / [r! × (n - r)!]
 ```
@@ -44,7 +44,7 @@ C(n, r) = n! / [r! × (n - r)!]
 - `n` = total number of distinct items  
 - `r` = number of items to choose
 
-### 🧠 Example:
+### Example:
 How many ways can you **choose** 3 letters from the word **"ABCDE"** (order doesn't matter)?
 
 - `n = 5`  
@@ -58,7 +58,7 @@ C(5, 3) = 5! / (3! × (5 - 3)!) = 120 / (6 × 2) = 10
 
 ---
 
-## 🧠 Quick Summary
+## Quick Summary
 
 | Concept      | Key Idea            | Formula                     | When to Use                                      |
 |--------------|---------------------|-----------------------------|--------------------------------------------------|
@@ -67,23 +67,22 @@ C(5, 3) = 5! / (3! × (5 - 3)!) = 120 / (6 × 2) = 10
 
 ---
 
-## 🎯 Real-Life Examples
+## Real-Life Examples
 
-### ✅ Permutations
+### Permutations
 - **Seating arrangements** for 3 friends on 5 chairs
 - **Lock codes** where digit order matters (e.g., `123` ≠ `321`)
 
-### ✅ Combinations
+### Combinations
 - Choosing 3 toppings for a pizza from a list of 10
 - Selecting a committee from a group of people
 
 ---
 
-## 🧠 Quick Tip to Remember
+## Quick Tip to Remember
 
 - **Permutation** = **Position matters** (like arranging people in a line).
 - **Combination** = **Chill with order** (like selecting lottery numbers).
 
 ---
 
-Happy counting! 🎉
