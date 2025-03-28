@@ -11,9 +11,9 @@
 - 혁팬하임 유튜브
 - Mathmatics for machine learing [https://www.youtube.com/playlist?list=PLiiljHvN6z1_o1ztXTKWPrShrMrBLo5P3](https://www.youtube.com/playlist?list=PLiiljHvN6z1_o1ztXTKWPrShrMrBLo5P3), [https://www.youtube.com/playlist?list=PLiiljHvN6z193BBzS0Ln8NnqQmzimTW23](https://www.youtube.com/playlist?list=PLiiljHvN6z193BBzS0Ln8NnqQmzimTW23)
 - Linear Algebra
-  - Immersive Linear Algebra [https://immersivemath.com/ila/index.html], Image Linearing
-  - Interactive Linear Algebra [https://textbooks.math.gatech.edu/ila/], More Mathmatical
-  - Linear Algegra with Python [https://github.com/weijie-chen/Linear-Algebra-With-Python], Python Coding
+  - [Immersive Linear Algebra](https://immersivemath.com/ila/index.html), Image Linearing
+  - [Interactive Linear Algebra](https://textbooks.math.gatech.edu/ila/), More Mathmatical
+  - [Linear Algegra with Python](https://github.com/weijie-chen/Linear-Algebra-With-Python), Python Coding
   3. Interview
 - Deep understanding of linear models
 - Have a solid understanding of probability and some important probability distribution. (ex. Bete binomial distribution)
