@@ -8,7 +8,7 @@ This guide explains how the coefficients \( b_0 \) (intercept) and \( b_1 \) (sl
 
 In simple linear regression, we aim to model the relationship between a predictor variable \( X \) and a response variable \( Y \) using a straight line:
 
-Ŷᵢ = b₀ + b₁Xᵢ
+\[ \hat{Y}_i = b_0 + b_1 X_i \]
 
 Where:
 - \( \hat{Y}_i \): Predicted value of \( Y \)
@@ -88,3 +88,9 @@ Steps:
 - The goal is to minimize prediction error by finding the best-fit line using least squares.
 - These formulas are the foundation for more advanced regression techniques.
 
+
+## 📚 References
+
+- *An Introduction to Statistical Learning* (ISLR)
+- MIT 18.05 – Introduction to Probability and Statistics
+- Khan Academy – Linear Regression
