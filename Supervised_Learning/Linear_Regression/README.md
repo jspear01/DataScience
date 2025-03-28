@@ -93,85 +93,87 @@ Steps:
 
 
 
-# 📘 Standard Errors in Simple Linear Regression
+## 📘 Standard Errors in Simple Linear Regression
 
-This document explains how to compute and interpret the **standard errors** of the regression coefficients in simple linear regression — based on **Equation 3.8** from the source material.
-
----
-
-## 🔢 Equation
-
-\\[
-\\text{SE}(\\hat{\\beta}_0)^2 = \\sigma^2 \\left[ \\frac{1}{n} + \\frac{\\bar{x}^2}{\\sum_{i=1}^n (x_i - \\bar{x})^2} \\right], \\quad
-\\text{SE}(\\hat{\\beta}_1)^2 = \\frac{\\sigma^2}{\\sum_{i=1}^n (x_i - \\bar{x})^2}
-\\]
-
-- \\(\\hat{\\beta}_0\\): Estimated **intercept**
-- \\(\\hat{\\beta}_1\\): Estimated **slope**
-- \\(\\bar{x}\\): Mean of the predictor variable \\(x\\)
-- \\(\\sigma^2\\): **Error variance**, estimated from residuals
-- \\(n\\): Number of observations
+This document explains how to compute and interpret the **standard errors** of the regression coefficients in simple linear regression.
 
 ---
 
-## 📘 What Do These Formulas Represent?
+### 🔢 Equation
+
+\[
+\text{SE}(\hat{\beta}_0)^2 = \sigma^2 \left( \frac{1}{n} + \frac{\bar{x}^2}{\sum_{i=1}^n (x_i - \bar{x})^2} \right), \quad
+\text{SE}(\hat{\beta}_1)^2 = \frac{\sigma^2}{\sum_{i=1}^n (x_i - \bar{x})^2}
+\]
+
+- \(\hat{\beta}_0\): Estimated **intercept**
+- \(\hat{\beta}_1\): Estimated **slope**
+- \(\bar{x}\): Mean of the predictor variable \(x\)
+- \(\sigma^2\): **Error variance**, estimated from residuals
+- \(n\): Number of observations
+
+---
+
+### 📘 What Do These Formulas Represent?
 
 These equations give the **variances** of the least squares estimates of the slope and intercept. The **standard errors** (SE) are the square roots of these variances:
 
-- `SE(β̂₀)` measures the uncertainty in the **intercept**
-- `SE(β̂₁)` measures the uncertainty in the **slope**
+- \(\text{SE}(\hat{\beta}_0)\): measures uncertainty in the **intercept**
+- \(\text{SE}(\hat{\beta}_1)\): measures uncertainty in the **slope**
 
 ---
 
-## 🧠 Intuition Behind the Components
+### 🧠 Intuition Behind the Components
 
-### SE(β̂₁) – Slope
-```math
-SE(β̂₁)^2 = σ² / Σ(xᵢ - x̄)²
-```
+#### SE(\(\hat{\beta}_1\)) – Slope
 
-- **Numerator**: σ² = noise in the outcome variable \\(y\\)
-- **Denominator**: variability in predictor \\(x\\)
-- More spread in \\(x\\) → more reliable slope estimate → smaller SE
+\[
+\text{SE}(\hat{\beta}_1)^2 = \frac{\sigma^2}{\sum (x_i - \bar{x})^2}
+\]
+
+- **Numerator**: \(\sigma^2\) = noise in the outcome variable \(y\)
+- **Denominator**: variability in predictor \(x\)
+- More spread in \(x\) → more reliable slope estimate → smaller SE
 
 ---
 
-### SE(β̂₀) – Intercept
-```math
-SE(β̂₀)^2 = σ² * [1/n + (x̄² / Σ(xᵢ - x̄)²)]
-```
+#### SE(\(\hat{\beta}_0\)) – Intercept
+
+\[
+\text{SE}(\hat{\beta}_0)^2 = \sigma^2 \left( \frac{1}{n} + \frac{\bar{x}^2}{\sum (x_i - \bar{x})^2} \right)
+\]
 
 - **Includes two parts**:
-  - `1/n`: uncertainty from sample size
-  - `(x̄² / Σ(xᵢ - x̄)²)`: larger when x̄ is far from 0 (magnifies slope uncertainty)
-- If the average \\(x\\) is far from zero or if \\(x\\) is not spread out → intercept becomes less reliable
+  - \(1/n\): uncertainty from sample size
+  - \(\bar{x}^2 / \sum (x_i - \bar{x})^2\): increases if \(\bar{x}\) is far from 0
+- If \(\bar{x}\) is far from 0 or \(x\) is not spread out → intercept becomes less reliable
 
 ---
 
-## 📈 Interpretation Summary
+### 📈 Interpretation Summary
 
 | Term | Meaning | Grows When... |
 |------|---------|----------------|
-| \\(\\sigma^2\\) | Variance of error terms | Data is noisy (high residuals) |
-| \\(\\sum (x_i - \\bar{x})^2\\) | Spread of x-values | x-values are concentrated |
-| `SE(β̂₁)` | Slope uncertainty | x is not spread out or y is noisy |
-| `SE(β̂₀)` | Intercept uncertainty | x̄ is far from 0 or x is not spread |
+| \(\sigma^2\) | Variance of error terms | Data is noisy (high residuals) |
+| \(\sum (x_i - \bar{x})^2\) | Spread of x-values | x-values are concentrated |
+| \(\text{SE}(\hat{\beta}_1)\) | Slope uncertainty | x is not spread out or y is noisy |
+| \(\text{SE}(\hat{\beta}_0)\) | Intercept uncertainty | \(\bar{x}\) is far from 0 or x is not spread |
 
 ---
 
-## 🧮 Estimating σ²
+### 🧮 Estimating \(\sigma^2\)
 
-\\[
-\\hat{\\sigma}^2 = \\frac{RSS}{n - 2}, \\quad \\text{where } RSS = \\sum (y_i - \\hat{y}_i)^2
-\\]
+\[
+\hat{\sigma}^2 = \frac{RSS}{n - 2}, \quad \text{where } RSS = \sum (y_i - \hat{y}_i)^2
+\]
 
 - RSS: Residual Sum of Squares (total squared error)
-- `n - 2`: Degrees of freedom (2 parameters: slope + intercept)
+- \(n - 2\): Degrees of freedom (2 parameters: slope + intercept)
 
 ---
 
-## ✅ TL;DR
+### ✅ TL;DR
 
 - Standard errors help quantify how **reliable** your regression estimates are.
-- More data, more spread in \\(x\\), and less noise in \\(y\\) → smaller standard errors.
+- More data, more spread in \(x\), and less noise in \(y\) → smaller standard errors.
 - These are essential for computing **confidence intervals** and **hypothesis tests** in regression.
