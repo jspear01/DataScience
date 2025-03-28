@@ -1,20 +1,22 @@
 
 # Simple Linear Regression: Computing Coefficients Using RSS
 
-This guide explains how the coefficients \( b_0 \) (intercept) and \( b_1 \) (slope) in simple linear regression are computed by minimizing the **Residual Sum of Squares (RSS)**.
+This guide explains how the coefficients `b₀` (intercept) and `b₁` (slope) in simple linear regression are computed by minimizing the **Residual Sum of Squares (RSS)**.
 
 ---
 
 ## 📘 Objective
 
-In simple linear regression, we aim to model the relationship between a predictor variable \( X \) and a response variable \( Y \) using a straight line:
+In simple linear regression, we aim to model the relationship between a predictor variable `X` and a response variable `Y` using a straight line:
 
-\[ \hat{Y}_i = b_0 + b_1 X_i \]
+```
+Ŷᵢ = b₀ + b₁Xᵢ
+```
 
 Where:
-- \( \hat{Y}_i \): Predicted value of \( Y \)
-- \( b_0 \): Intercept (value of \( Y \) when \( X = 0 \))
-- \( b_1 \): Slope (change in \( Y \) per unit change in \( X \))
+- `Ŷᵢ`: Predicted value of `Y`
+- `b₀`: Intercept (value of `Y` when `X = 0`)
+- `b₁`: Slope (change in `Y` per unit change in `X`)
 
 ---
 
@@ -22,9 +24,9 @@ Where:
 
 To find the best-fit line, we minimize the **Residual Sum of Squares**:
 
-\[
-RSS = \sum_{i=1}^n (Y_i - \hat{Y}_i)^2 = \sum_{i=1}^n (Y_i - b_0 - b_1 X_i)^2
-\]
+```
+RSS = Σ(Yᵢ - Ŷᵢ)² = Σ(Yᵢ - b₀ - b₁Xᵢ)²
+```
 
 RSS measures the total squared distance between the observed and predicted values.
 
@@ -32,59 +34,59 @@ RSS measures the total squared distance between the observed and predicted value
 
 ## 🧠 Deriving the Coefficients
 
-We minimize RSS by taking partial derivatives with respect to \( b_0 \) and \( b_1 \), and setting them to zero.
+We minimize RSS by taking partial derivatives with respect to `b₀` and `b₁`, and setting them to zero.
 
-### 🔹 Step 1: Compute the Slope \( b_1 \)
+### 🔹 Step 1: Compute the Slope `b₁`
 
-\[
-b_1 = \frac{\sum (X_i - \bar{X})(Y_i - \bar{Y})}{\sum (X_i - \bar{X})^2}
-\]
+```
+b₁ = Σ((Xᵢ - X̄)(Yᵢ - Ȳ)) / Σ((Xᵢ - X̄)²)
+```
 
-This is the **slope** of the regression line. It reflects how much \( Y \) changes for a one-unit increase in \( X \).
+This is the **slope** of the regression line. It reflects how much `Y` changes for a one-unit increase in `X`.
 
 ---
 
-### 🔹 Step 2: Compute the Intercept \( b_0 \)
+### 🔹 Step 2: Compute the Intercept `b₀`
 
-Once \( b_1 \) is known, calculate the **intercept**:
+Once `b₁` is known, calculate the **intercept**:
 
-\[
-b_0 = \bar{Y} - b_1 \bar{X}
-\]
+```
+b₀ = Ȳ - b₁X̄
+```
 
-This ensures the regression line passes through the point \( (\bar{X}, \bar{Y}) \), the mean of the data.
+This ensures the regression line passes through the point `(X̄, Ȳ)`, the mean of the data.
 
 ---
 
 ## 🔁 Summary of Final Formulas
 
 - **Slope (b₁):**
-  \[
-  b_1 = \frac{\sum (X_i - \bar{X})(Y_i - \bar{Y})}{\sum (X_i - \bar{X})^2}
-  \]
+```
+b₁ = Σ((Xᵢ - X̄)(Yᵢ - Ȳ)) / Σ((Xᵢ - X̄)²)
+```
 
 - **Intercept (b₀):**
-  \[
-  b_0 = \bar{Y} - b_1 \bar{X}
-  \]
+```
+b₀ = Ȳ - b₁X̄
+```
 
 ---
 
 ## 🔢 Example
 
 Given:
-- \( X = [1, 2, 3] \)
-- \( Y = [2, 4, 5] \)
+- `X = [1, 2, 3]`
+- `Y = [2, 4, 5]`
 
 Steps:
-1. Compute means: \( \bar{X} = 2 \), \( \bar{Y} \approx 3.67 \)
-2. Calculate \( b_1 \) using the slope formula
-3. Use \( b_0 = \bar{Y} - b_1 \bar{X} \) to get the intercept
+1. Compute means: `X̄ = 2`, `Ȳ ≈ 3.67`
+2. Calculate `b₁` using the slope formula.
+3. Use `b₀ = Ȳ - b₁X̄` to get the intercept.
 
 ---
 
 ## ✅ Notes
 
-- This approach assumes a linear relationship between \( X \) and \( Y \).
+- This approach assumes a linear relationship between `X` and `Y`.
 - The goal is to minimize prediction error by finding the best-fit line using least squares.
 - These formulas are the foundation for more advanced regression techniques.
