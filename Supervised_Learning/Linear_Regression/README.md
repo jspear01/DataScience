@@ -8,9 +8,7 @@ This guide explains how the coefficients \( b_0 \) (intercept) and \( b_1 \) (sl
 
 In simple linear regression, we aim to model the relationship between a predictor variable \( X \) and a response variable \( Y \) using a straight line:
 
-\[
-\hat{Y}_i = b_0 + b_1 X_i
-\]
+Ŷᵢ = b₀ + b₁Xᵢ
 
 Where:
 - \( \hat{Y}_i \): Predicted value of \( Y \)
