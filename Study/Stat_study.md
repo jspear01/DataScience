@@ -50,13 +50,8 @@ A **permutation** is an arrangement of objects **in a specific order**.
 
 ### Formula:
 
-<pre>
 ```latex
-$$
 P(n, r) = \frac{n!}{(n - r)!}
-$$
-```
-</pre>
 
 
 - `n` = total number of distinct items  
