@@ -35,13 +35,13 @@ $$
 In other words, given that **C** occurred, the joint probability of **A** and **B** factorizes into the product of their individual conditional probabilities.
 
 
-# 🧠 Bayes' Theorem Examples
+### 🧠 Bayes' Theorem Examples
 
 Bayes’ Theorem allows us to update our beliefs based on new evidence. It is defined as:
 
-```latex
+$$
 P(A | B) = \frac{P(B | A) \cdot P(A)}{P(B)}
-```
+$$
 
 Where:
 - **P(A | B)** is the posterior (updated probability of A given B)
@@ -51,37 +51,37 @@ Where:
 
 ---
 
-## 🏥 Example 1: Medical Diagnosis
+#### 🏥 Example 1: Medical Diagnosis
 
 A disease affects 1% of a population. A diagnostic test correctly identifies the disease 99% of the time (**true positive**), but also has a 5% **false positive** rate.
 
 **Question:** What is the probability a person has the disease if they test positive?
 
-### 📊 Given:
+**📊 Given:**
 - P(Disease) = 0.01  
 - P(No Disease) = 0.99  
 - P(Positive | Disease) = 0.99  
 - P(Positive | No Disease) = 0.05  
 
-### 🧮 Solution
+#### 🧮 Solution
 
 We want to compute:
 
-```latex
+$$
 P(Disease | Positive) = \frac{P(Positive | Disease) \cdot P(Disease)}{P(Positive)}
-```
+$$
 
 First, compute the total probability of testing positive:
 
-```latex
+$$
 P(Positive) = P(Positive | Disease) \cdot P(Disease) + P(Positive | No Disease) \cdot P(No Disease)
-```
+$$
 
 Plug in the values:
 
-```latex
+$$
 P(Positive) = 0.99 \cdot 0.01 + 0.05 \cdot 0.99 = 0.0099 + 0.0495 = 0.0594
-```
+$$
 
 Now calculate the final result:
 
@@ -89,23 +89,51 @@ Now calculate the final result:
 P(Disease | Positive) = \frac{0.0099}{0.0594} \approx 0.1667
 ```
 
-### 📌 Interpretation:
+#### 📌 Interpretation:
 
 Even with a positive test, there's only about a **16.67% chance** the person actually has the disease. This is due to the low base rate (prior probability) of the disease.
 
 ---
 
-## 🎓 Example 2: Student Cheating Detection
+#### 🎓 Example 2: Student Cheating Detection
 
 A proctor believes 2% of students cheat. A detection algorithm correctly flags cheating behavior 90% of the time, but falsely flags honest students 10% of the time.
 
 **Question:** If a student is flagged, what’s the probability they actually cheated?
 
-### 📊 Given:
+**📊 Given:**
 - P(Cheat) = 0.02  
 - P(No Cheat) = 0.98  
 - P(Flagged | Cheat) = 0.90  
-- P(Flagged | No Cheat) =
+- P(Flagged | No Cheat) = 0.10  
+
+#### 🧮 Solution
+
+We want to compute:
+
+```latex
+P(Cheat | Flagged) = \frac{P(Flagged | Cheat) \cdot P(Cheat)}{P(Flagged)}
+```
+
+Compute the denominator:
+
+```latex
+P(Flagged) = 0.90 \cdot 0.02 + 0.10 \cdot 0.98 = 0.018 + 0.098 = 0.116
+```
+
+Now calculate:
+
+```latex
+P(Cheat | Flagged) = \frac{0.018}{0.116} \approx 0.155
+```
+
+#### 📌 Interpretation:
+
+There’s only about a **15.5% chance** the student actually cheated if flagged, despite the high accuracy of the detection algorithm. This is again due to the low prior (only 2% are expected to cheat).
+
+---
+
+Let me know if you'd like to expand this with more real-world examples, visual diagrams, or Python code implementations!
 
 
 
