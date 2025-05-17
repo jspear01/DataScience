@@ -85,9 +85,9 @@ $$
 
 Now calculate the final result:
 
-```latex
+$$
 P(Disease | Positive) = \frac{0.0099}{0.0594} \approx 0.1667
-```
+$$
 
 #### 📌 Interpretation:
 
@@ -111,21 +111,21 @@ A proctor believes 2% of students cheat. A detection algorithm correctly flags c
 
 We want to compute:
 
-```latex
+$$
 P(Cheat | Flagged) = \frac{P(Flagged | Cheat) \cdot P(Cheat)}{P(Flagged)}
-```
+$$
 
 Compute the denominator:
 
-```latex
+$$
 P(Flagged) = 0.90 \cdot 0.02 + 0.10 \cdot 0.98 = 0.018 + 0.098 = 0.116
-```
+$$
 
 Now calculate:
 
-```latex
+$$
 P(Cheat | Flagged) = \frac{0.018}{0.116} \approx 0.155
-```
+$$
 
 #### 📌 Interpretation:
 
