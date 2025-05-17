@@ -38,17 +38,17 @@ In other words, given that **C** occurred, the joint probability of **A** and **
 
 
 
-# Permutations and Combinations
+## Permutations and Combinations
 
 This guide explains the difference between **permutations** and **combinations** — essential concepts in combinatorics used for counting and arranging items.
 
 ---
 
-## Permutation: *Order Matters*
+### Permutation: *Order Matters*
 
 A **permutation** is an arrangement of objects **in a specific order**.
 
-### Formula:
+**Formula:**
 
 $$
 P(n, r) = \frac{n!}{(n - r)!}
@@ -60,7 +60,7 @@ $$
 - `r` = number of items to arrange  
 - `!` = factorial (e.g., `5! = 5 × 4 × 3 × 2 × 1 = 120`)
 
-### Example:
+**Example:**
 How many ways can you arrange 3 letters from the word **"ABCDE"**?
 
 - `n = 5` (letters)  
@@ -74,11 +74,11 @@ P(5, 3) = 5! / (5 - 3)! = 120 / 2 = 60
 
 ---
 
-## ➕ Combination: *Order Doesn’t Matter*
+#### ➕ Combination: *Order Doesn’t Matter*
 
 A **combination** is a selection of objects **without considering order**.
 
-### Formula:
+**Formula:**
 ```
 C(n, r) = n! / [r! × (n - r)!]
 ```
@@ -86,7 +86,7 @@ C(n, r) = n! / [r! × (n - r)!]
 - `n` = total number of distinct items  
 - `r` = number of items to choose
 
-### Example:
+**Example:**
 How many ways can you **choose** 3 letters from the word **"ABCDE"** (order doesn't matter)?
 
 - `n = 5`  
@@ -100,7 +100,7 @@ C(5, 3) = 5! / (3! × (5 - 3)!) = 120 / (6 × 2) = 10
 
 ---
 
-## Quick Summary
+#### Quick Summary
 
 | Concept      | Key Idea            | Formula                     | When to Use                                      |
 |--------------|---------------------|-----------------------------|--------------------------------------------------|
@@ -109,7 +109,7 @@ C(5, 3) = 5! / (3! × (5 - 3)!) = 120 / (6 × 2) = 10
 
 ---
 
-## Real-Life Examples
+**Real-Life Examples**
 
 ### Permutations
 - **Seating arrangements** for 3 friends on 5 chairs
