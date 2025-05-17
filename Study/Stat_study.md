@@ -1,3 +1,41 @@
+# Probability Concepts
+
+## Conditional Probability
+
+We are often interested in knowing the probability of an event **A** occurring, given that another event **B** has already occurred. This is known as the **conditional probability** of **A given B**, and it can be calculated using **Bayes' Rule**:
+
+```
+P(A|B) = P(B|A) * P(A) / P(B)
+```
+
+
+### Bayes' Rule Components
+
+- **P(A)**: The **prior** — the initial probability of event A.
+- **P(B|A)**: The **likelihood** — the probability of observing B given that A occurred.
+- **P(A|B)**: The **posterior** — the updated probability of A given that B occurred.
+
+### Independence
+
+If the conditional probability **P(A|B)** equals the prior **P(A)**, then **A** and **B** are said to be **independent**. In this case, knowledge of **B** does not affect our belief about the occurrence of **A**:
+
+```
+P(A|B) = P(A) \Rightarrow A \perp B
+```
+
+### Conditional Independence
+
+Two events **A** and **B** can also be **conditionally independent** given a third event **C**. This means that once **C** has occurred, **A** and **B** do not provide additional information about each other:
+
+```
+P(A \cap B | C) = P(A|C) \cdot P(B|C)
+```
+
+In other words, given that **C** occurred, the joint probability of **A** and **B** factorizes into the product of their individual conditional probabilities.
+
+
+
+
 
 # Permutations and Combinations
 
