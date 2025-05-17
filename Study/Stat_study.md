@@ -35,6 +35,77 @@ $$
 In other words, given that **C** occurred, the joint probability of **A** and **B** factorizes into the product of their individual conditional probabilities.
 
 
+# 🧠 Bayes' Theorem Examples
+
+Bayes’ Theorem allows us to update our beliefs based on new evidence. It is defined as:
+
+```latex
+P(A | B) = \frac{P(B | A) \cdot P(A)}{P(B)}
+```
+
+Where:
+- **P(A | B)** is the posterior (updated probability of A given B)
+- **P(B | A)** is the likelihood
+- **P(A)** is the prior (initial belief)
+- **P(B)** is the marginal probability of B
+
+---
+
+## 🏥 Example 1: Medical Diagnosis
+
+A disease affects 1% of a population. A diagnostic test correctly identifies the disease 99% of the time (**true positive**), but also has a 5% **false positive** rate.
+
+**Question:** What is the probability a person has the disease if they test positive?
+
+### 📊 Given:
+- P(Disease) = 0.01  
+- P(No Disease) = 0.99  
+- P(Positive | Disease) = 0.99  
+- P(Positive | No Disease) = 0.05  
+
+### 🧮 Solution
+
+We want to compute:
+
+```latex
+P(Disease | Positive) = \frac{P(Positive | Disease) \cdot P(Disease)}{P(Positive)}
+```
+
+First, compute the total probability of testing positive:
+
+```latex
+P(Positive) = P(Positive | Disease) \cdot P(Disease) + P(Positive | No Disease) \cdot P(No Disease)
+```
+
+Plug in the values:
+
+```latex
+P(Positive) = 0.99 \cdot 0.01 + 0.05 \cdot 0.99 = 0.0099 + 0.0495 = 0.0594
+```
+
+Now calculate the final result:
+
+```latex
+P(Disease | Positive) = \frac{0.0099}{0.0594} \approx 0.1667
+```
+
+### 📌 Interpretation:
+
+Even with a positive test, there's only about a **16.67% chance** the person actually has the disease. This is due to the low base rate (prior probability) of the disease.
+
+---
+
+## 🎓 Example 2: Student Cheating Detection
+
+A proctor believes 2% of students cheat. A detection algorithm correctly flags cheating behavior 90% of the time, but falsely flags honest students 10% of the time.
+
+**Question:** If a student is flagged, what’s the probability they actually cheated?
+
+### 📊 Given:
+- P(Cheat) = 0.02  
+- P(No Cheat) = 0.98  
+- P(Flagged | Cheat) = 0.90  
+- P(Flagged | No Cheat) =
 
 
 
