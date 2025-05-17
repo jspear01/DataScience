@@ -5,9 +5,11 @@
 We are often interested in knowing the probability of an event **A** occurring, given that another event **B** has already occurred. This is known as the **conditional probability** of **A given B**, and it can be calculated using **Bayes' Rule**:
 
 
-P(A|B) = P(B|A) * P(A) / P(B)
+$P(A \mid B) = \frac{P(B \mid A) \cdot P(A)}{P(B)}$
 
-
+$$
+P(A \mid B) = \frac{P(B \mid A) \cdot P(A)}{P(B)}
+$$
 
 ### Bayes' Rule Components
 
