@@ -49,10 +49,9 @@ This guide explains the difference between **permutations** and **combinations**
 A **permutation** is an arrangement of objects **in a specific order**.
 
 ### Formula:
+
 ```
-$$
-P(n, r) = n! / (n - r)!
-$$
+$P(n, r) = \frac{n!}{(n - r)!}$
 ```
 
 - `n` = total number of distinct items  
