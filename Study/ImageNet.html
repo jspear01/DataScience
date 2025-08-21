@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: AlexNet & the Deep Learning Revolution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals (Slate, Zinc, Stone) with a subtle Amber accent. -->
+    <!-- Application Structure Plan: The application is designed as a narrative journey to guide users from the 'why' to the 'how' and 'what' of the AlexNet paper. It starts with the context (The Challenge), moves to the solution (Architecture & Innovations), presents the outcome (Performance), and concludes with the impact (Legacy). This thematic, story-driven structure is more engaging and intuitive for understanding a complex technical paper than a simple linear summary. Key interactions include clicking on architecture layers to reveal details, toggling between innovations, and hovering over charts to see precise data points. This flow prioritizes conceptual understanding before diving into technical specifics, making the content accessible to a broader audience. -->
+    <!-- Visualization & Content Choices: 
+        - [Report Info: ILSVRC Performance Data] -> [Goal: Compare] -> [Viz: Bar Chart] -> [Interaction: Hover for tooltips] -> [Justification: A bar chart provides the most direct and impactful visual comparison of error rates, immediately highlighting AlexNet's superior performance.] -> [Library: Chart.js]
+        - [Report Info: AlexNet's 8-layer structure] -> [Goal: Organize/Inform] -> [Viz: Interactive Flow Diagram] -> [Interaction: Click to show details] -> [Justification: A static diagram can be overwhelming. An interactive one allows users to explore the architecture layer by layer at their own pace, revealing complexity progressively.] -> [Method: HTML/CSS/JS]
+        - [Report Info: ReLU vs. Tanh training speed] -> [Goal: Change/Compare] -> [Viz: Line Chart] -> [Interaction: Hover for tooltips] -> [Justification: A line chart effectively shows the change in error rate over training iterations, clearly demonstrating the speed advantage of ReLU.] -> [Library: Chart.js]
+        - [Report Info: Key Innovations & Regularization] -> [Goal: Inform] -> [Viz: Tabbed Content/Cards] -> [Interaction: Click to switch view] -> [Justification: Grouping these concepts into interactive cards or tabs keeps the UI clean and prevents information overload, allowing focused exploration of each technique.] -> [Method: HTML/CSS/JS]
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #1e293b; /* slate-800 */
+        }
+        .section-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+        .nav-button {
+            transition: all 0.2s ease-in-out;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-button.active {
+            border-bottom-color: #f59e0b; /* amber-500 */
+            color: #0f172a; /* slate-900 */
+        }
+        .nav-button:hover {
+            color: #0f172a; /* slate-900 */
+        }
+        .layer-box {
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        .layer-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .innovation-tab {
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        .innovation-tab.active {
+            background-color: #f59e0b; /* amber-500 */
+            color: white;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 50vh;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <span class="text-2xl font-bold text-slate-900">AlexNet</span>
+                    <span class="text-sm font-medium text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full">The Deep Learning Spark</span>
+                </div>
+                <nav class="hidden md:flex space-x-6 text-sm font-medium text-slate-600">
+                    <a href="#introduction" class="nav-button active">Introduction</a>
+                    <a href="#architecture" class="nav-button">Architecture</a>
+                    <a href="#innovations" class="nav-button">Innovations</a>
+                    <a href="#performance" class="nav-button">Performance</a>
+                    <a href="#legacy" class="nav-button">Legacy</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div class="space-y-16">
+            
+            <section id="introduction" class="section-card p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">A Paradigm Shift in Computer Vision</h2>
+                <p class="text-slate-600 leading-relaxed">
+                    In 2012, the paper "ImageNet Classification with Deep Convolutional Neural Networks" by Krizhevsky, Sutskever, and Hinton didn't just win a competition; it ignited a revolution. The model, nicknamed "AlexNet," demonstrated with stunning clarity that deep neural networks, given enough data and compute, could achieve performance far beyond the established methods of the time. This interactive report explores the architecture, innovations, and groundbreaking results that marked the definitive arrival of the deep learning era.
+                </p>
+            </section>
+
+            <section id="architecture" class="section-card p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">The AlexNet Blueprint</h2>
+                <p class="text-slate-600 leading-relaxed mb-8 max-w-4xl">
+                    AlexNet is an 8-layer deep convolutional neural network. The first five layers are convolutional (for feature extraction) and the last three are fully-connected (for classification). Its design was a masterclass in balancing model capacity with the hardware limitations of the time, famously splitting the model across two GPUs. Click on each layer below to see its specific parameters and purpose.
+                </p>
+                <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4 mb-8">
+                    <div class="text-center">
+                        <div class="w-24 h-24 bg-slate-100 rounded-lg flex items-center justify-center text-slate-500">
+                            <span class="text-4xl">🖼️</span>
+                        </div>
+                        <p class="mt-2 text-sm font-medium">Input Image</p>
+                        <p class="text-xs text-slate-500">224x224x3</p>
+                    </div>
+                    <div class="text-3xl text-slate-300 font-light">→</div>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                        <div class="layer-box text-center p-3 bg-sky-100 text-sky-800 rounded-lg" onclick="showLayerDetails('conv1')">
+                            <p class="font-bold">Conv 1</p><p class="text-xs">96 kernels</p>
+                        </div>
+                        <div class="layer-box text-center p-3 bg-sky-100 text-sky-800 rounded-lg" onclick="showLayerDetails('conv2')">
+                            <p class="font-bold">Conv 2</p><p class="text-xs">256 kernels</p>
+                        </div>
+                        <div class="layer-box text-center p-3 bg-sky-100 text-sky-800 rounded-lg" onclick="showLayerDetails('conv3')">
+                            <p class="font-bold">Conv 3</p><p class="text-xs">384 kernels</p>
+                        </div>
+                        <div class="layer-box text-center p-3 bg-sky-100 text-sky-800 rounded-lg" onclick="showLayerDetails('conv4')">
+                            <p class="font-bold">Conv 4</p><p class="text-xs">384 kernels</p>
+                        </div>
+                        <div class="layer-box text-center p-3 bg-sky-100 text-sky-800 rounded-lg" onclick="showLayerDetails('conv5')">
+                            <p class="font-bold">Conv 5</p><p class="text-xs">256 kernels</p>
+                        </div>
+                    </div>
+                     <div class="text-3xl text-slate-300 font-light">→</div>
+                    <div class="grid grid-cols-3 gap-4">
+                         <div class="layer-box text-center p-3 bg-indigo-100 text-indigo-800 rounded-lg" onclick="showLayerDetails('fc6')">
+                            <p class="font-bold">FC 6</p><p class="text-xs">4096 neurons</p>
+                        </div>
+                        <div class="layer-box text-center p-3 bg-indigo-100 text-indigo-800 rounded-lg" onclick="showLayerDetails('fc7')">
+                            <p class="font-bold">FC 7</p><p class="text-xs">4096 neurons</p>
+                        </div>
+                        <div class="layer-box text-center p-3 bg-indigo-100 text-indigo-800 rounded-lg" onclick="showLayerDetails('fc8')">
+                            <p class="font-bold">Output</p><p class="text-xs">1000 classes</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="layer-details" class="p-6 bg-slate-50 rounded-lg min-h-[120px] flex items-center justify-center transition-all duration-300">
+                    <p class="text-slate-500">Click a layer to see details here.</p>
+                </div>
+            </section>
+
+            <section id="innovations" class="section-card p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">The Secret Sauce: Core Innovations</h2>
+                <p class="text-slate-600 leading-relaxed mb-8 max-w-4xl">
+                    AlexNet's success wasn't just about depth; it was a synergy of several key technical contributions that solved critical problems in training large networks. These innovations addressed everything from training speed to preventing the model from "memorizing" the training data (overfitting).
+                </p>
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="md:w-1/3">
+                        <div class="flex flex-col space-y-2">
+                            <button class="innovation-tab active text-left p-4 rounded-lg" data-tab="relu">
+                                <h4 class="font-bold">ReLU Activation</h4>
+                                <p class="text-sm">For faster training.</p>
+                            </button>
+                            <button class="innovation-tab text-left p-4 rounded-lg" data-tab="gpu">
+                                <h4 class="font-bold">Multi-GPU Training</h4>
+                                <p class="text-sm">To handle the model's size.</p>
+                            </button>
+                            <button class="innovation-tab text-left p-4 rounded-lg" data-tab="regularization">
+                                <h4 class="font-bold">Advanced Regularization</h4>
+                                <p class="text-sm">To prevent overfitting.</p>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3">
+                        <div id="innovation-content">
+                            <div class="innovation-pane active" id="relu-content">
+                                <h3 class="text-xl font-bold mb-2">ReLU: Unlocking Training Speed</h3>
+                                <p class="text-slate-600 mb-4">The paper replaced traditional neuron activation functions (like tanh or sigmoid) with the Rectified Linear Unit (ReLU). This non-saturating function, f(x)=max(0,x), allowed gradients to flow more easily during backpropagation, dramatically accelerating training. The paper demonstrated that a network with ReLUs could reach a target error rate 6 times faster than an equivalent network using tanh.</p>
+                                <div class="chart-container" style="height:250px; max-height: 30vh;">
+                                    <canvas id="reluChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="innovation-pane hidden" id="gpu-content">
+                                <h3 class="text-xl font-bold mb-2">Multi-GPU Training: Overcoming Hardware Limits</h3>
+                                <p class="text-slate-600">With 60 million parameters, AlexNet was too large to fit on a single GPU of the era (NVIDIA GTX 580 with 3GB of memory). The authors ingeniously split the network across two GPUs, carefully designing the communication pathways between them. This model parallelism was a critical engineering feat that not only made training possible but also slightly improved accuracy by encouraging feature specialization between the two halves of the network.</p>
+                            </div>
+                            <div class="innovation-pane hidden" id="regularization-content">
+                                <h3 class="text-xl font-bold mb-2">Taming Overfitting: Dropout & Data Augmentation</h3>
+                                <p class="text-slate-600 mb-4">To prevent the massive network from simply memorizing the training data, two key techniques were used:</p>
+                                <ul class="list-disc list-inside space-y-2 text-slate-600">
+                                    <li><strong>Data Augmentation:</strong> The training dataset was artificially enlarged by creating variations of existing images (translations, horizontal reflections, and altering RGB channel intensities). This taught the model to be invariant to these changes.</li>
+                                    <li><strong>Dropout:</strong> During training, neurons in the fully-connected layers were randomly "dropped" (set to zero) with a probability of 0.5. This prevented neurons from becoming co-dependent and forced them to learn more robust features.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="performance" class="section-card p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">A Leap in Performance</h2>
+                <p class="text-slate-600 leading-relaxed mb-8 max-w-4xl">
+                    The results spoke for themselves. In the 2012 ImageNet Large Scale Visual Recognition Challenge (ILSVRC), AlexNet achieved a top-5 test error rate of 15.3%. The next best entry, which used traditional computer vision techniques, managed only 26.2%. This unprecedented ~11% absolute improvement was a "Sputnik moment" for the AI community, providing irrefutable proof of the power of deep learning.
+                </p>
+                <div class="chart-container">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </section>
+
+            <section id="legacy" class="section-card p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">The Legacy of AlexNet</h2>
+                <p class="text-slate-600 leading-relaxed">
+                    The impact of AlexNet cannot be overstated. It shifted the entire field of computer vision away from hand-engineered features and towards end-to-end feature learning with deep neural networks. The paper provided the first complete, successful blueprint for a modern deep learning system, and its core principles—deep convolutional layers, ReLU activations, dropout, and GPU acceleration—became foundational elements for virtually all subsequent work in the field. It was not just a new state-of-the-art; it was the start of a new paradigm.
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="text-center py-8 text-sm text-slate-500">
+        <p>Interactive visualization of Krizhevsky et al. (2012).</p>
+    </footer>
+
+    <script>
+        const layerData = {
+            conv1: { title: "Layer 1: First Convolutional Layer", desc: "Filters the 224x224x3 input image with 96 kernels of size 11x11 with a stride of 4. Captures low-level features like edges and color blobs. Followed by max-pooling." },
+            conv2: { title: "Layer 2: Second Convolutional Layer", desc: "Takes the output of the first layer and applies 256 kernels of size 5x5. Learns more complex feature combinations. Followed by max-pooling." },
+            conv3: { title: "Layer 3: Third Convolutional Layer", desc: "Applies 384 kernels of size 3x3. This layer and the next two are stacked directly to build deeper feature representations without intermediate pooling." },
+            conv4: { title: "Layer 4: Fourth Convolutional Layer", desc: "Applies another 384 kernels of size 3x3, further building on the features from the previous layer." },
+            conv5: { title: "Layer 5: Fifth Convolutional Layer", desc: "The final convolutional layer with 256 kernels of size 3x3. Its output feature maps are then flattened and fed to the classifier. Followed by max-pooling." },
+            fc6: { title: "Layer 6: First Fully-Connected Layer", desc: "A standard neural network layer with 4096 neurons that classifies based on the high-level features from the convolutional layers. Dropout is applied here." },
+            fc7: { title: "Layer 7: Second Fully-Connected Layer", desc: "Another fully-connected layer with 4096 neurons, providing another level of abstraction for classification. Dropout is also applied here." },
+            fc8: { title: "Layer 8: Output Layer", desc: "The final fully-connected layer with 1000 neurons, one for each ImageNet class. A softmax function is applied to its output to get a probability distribution over the classes." }
+        };
+
+        function showLayerDetails(layerKey) {
+            const detailsDiv = document.getElementById('layer-details');
+            const data = layerData[layerKey];
+            if (data) {
+                detailsDiv.innerHTML = `<div class="text-left w-full"><h4 class="font-bold text-slate-800">${data.title}</h4><p class="text-slate-600 text-sm">${data.desc}</p></div>`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const innovationTabs = document.querySelectorAll('.innovation-tab');
+            const innovationPanes = document.querySelectorAll('.innovation-pane');
+
+            innovationTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    innovationTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    const targetPaneId = tab.dataset.tab + '-content';
+                    innovationPanes.forEach(pane => {
+                        if (pane.id === targetPaneId) {
+                            pane.classList.remove('hidden');
+                            pane.classList.add('active');
+                        } else {
+                            pane.classList.add('hidden');
+                            pane.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+            const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+            new Chart(performanceCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Previous State-of-the-Art (SIFT+FVs)', 'AlexNet (Winner)'],
+                    datasets: [{
+                        label: 'Top-5 Error Rate (%)',
+                        data: [26.2, 15.3],
+                        backgroundColor: [
+                            'rgba(100, 116, 139, 0.6)', // slate-500
+                            'rgba(245, 158, 11, 0.6)'  // amber-500
+                        ],
+                        borderColor: [
+                            'rgb(100, 116, 139)',
+                            'rgb(245, 158, 11)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Error Rate (%)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'ILSVRC 2012 Competition Results (Top-5 Error)',
+                            font: { size: 16 }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `Error: ${context.raw}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const reluCtx = document.getElementById('reluChart').getContext('2d');
+            new Chart(reluCtx, {
+                type: 'line',
+                data: {
+                    labels: ['0', '1', '2', '3', '4', '5', '6'],
+                    datasets: [{
+                        label: 'Tanh Neurons',
+                        data: [0.45, 0.42, 0.38, 0.35, 0.32, 0.29, 0.25],
+                        borderColor: 'rgb(100, 116, 139)',
+                        backgroundColor: 'rgba(100, 116, 139, 0.1)',
+                        fill: true,
+                        tension: 0.3
+                    }, {
+                        label: 'ReLU Neurons',
+                        data: [0.45, 0.30, 0.25, null, null, null, null],
+                        borderColor: 'rgb(245, 158, 11)',
+                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            title: { display: true, text: 'Training Error Rate' }
+                        },
+                        x: {
+                            title: { display: true, text: 'Training Iterations (Epochs)' }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'ReLU vs. Tanh Training Speed (CIFAR-10)'
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+            const navLinks = document.querySelectorAll('nav a');
+            const sections = document.querySelectorAll('section');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: "-50% 0px -50% 0px" });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            navLinks.forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
