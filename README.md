@@ -75,3 +75,21 @@ Practical Implementation:
 - Seq2Seq with attention = Seq2Seq + ability to generate a better final hidden state by computing weighted sum with every hidden layer from encoder to understand how "elements in input sequence relate to one another" and pass that info to decoder.
 
 - Transformers = Seq2Seq with Attention BUT instead of updating hidden state via sequential processing of input sequence, Attention layer is implemented such that the input sequence can be processed in one go and parallelizable on GPU. Transformer also allows for attention amongst input, attention amongst output and attention between the two.
+
+## ✅ Resume Check-Up
+
+### **Overall Strategy**
+- [ ] Focus on your most impressive **achievements**, not just a list of responsibilities. Use specific numbers and results to show your impact.  
+- [ ] **Tailor your resume** for each job application by highlighting skills and experiences that align with the job description.  
+
+### **Content**
+- [ ] Start with your **strongest information first**. Your most relevant experience and skills should be at the top to immediately grab a recruiter's attention.  
+- [ ] **Remove "fluff."** Get rid of vague or overused phrases like "hard-working" or "results-oriented." Instead, use action verbs and data to demonstrate these qualities.  
+- [ ] Keep it concise. Generally, aim for **one page** unless you have extensive experience (more than 10–15 years) that is highly relevant to the role.  
+
+### **Format and Polish**
+- [ ] Make your **name, phone number, and email** clearly visible at the top.  
+- [ ] **Do not include your mailing address** for privacy and security. A city and state is all that's needed.  
+- [ ] **Include links** to your relevant online presence, such as your LinkedIn profile, GitHub, or personal portfolio.  
+- [ ] **Hyperlink** to outside work or projects you've mentioned in your experience section.  
+- [ ] **Save your resume as a PDF** with a professional file name, such as `FirstName-LastName-Resume.pdf`.  
